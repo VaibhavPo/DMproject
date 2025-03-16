@@ -1,0 +1,18 @@
+<div class="container">
+
+    <!-- <div id="qr-reader-overlay"></div> -->
+    <!-- Brackets for QR placement -->
+    <div class="qr-bracket top-left"></div>
+    <div class="qr-bracket top-right"></div>
+    <div id="qr-reader" style="color: black; margin: 5px;"></div>
+    <div class="qr-bracket bottom-left"></div>
+    <div class="qr-bracket bottom-right"></div>
+    <!-- Optional: success message -->
+    <div class="success-message" *ngIf="scanSuccessMessage">{{ scanSuccessMessage }}</div>
+
+    <div *ngIf="charge !== null">
+        <p>Your charge is: {{ charge }}</p>
+        <button (click)="payCharge()" class="yellowB">Amount Paid</button>
+        <button (click)="cancelPayment()" class="yellowB">Cancel</button>
+    </div>
+</div>

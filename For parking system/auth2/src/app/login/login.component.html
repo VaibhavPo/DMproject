@@ -1,0 +1,30 @@
+<div class="container">
+  <form (ngSubmit)="onLogin()">
+      <h2>Log In</h2>
+      <div class="input-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" [(ngModel)]="loginData.username" name="username" required>
+      </div>
+      <div class="input-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" [(ngModel)]="loginData.password" name="password" required>
+      </div>
+      <button type="submit" class="yellowB">Login</button>
+      
+  </form>
+  <p style="font-size: medium;">Forgot your password? <button class="yellowB" (click)="showResetPassword()" style="width: 80px; height: 30px;">Reset</button></p>
+  <div *ngIf="resetPasswordVisible">
+      <form (ngSubmit)="onResetPassword()">
+        <div class="input-group">
+          <label for="resetDob">Date of Birth:</label>
+          <input type="date" id="resetDob" [(ngModel)]="resetData.dob" name="resetDob" required>
+        </div>
+        <div class="input-group">
+          <label for="resetMobile">Mobile Number:</label>
+          <input type="tel" id="resetMobile" [(ngModel)]="resetData.mobile" name="resetMobile" required>
+        </div>
+        <button type="submit" class="yellowB">Reset Password</button>
+      </form>
+    </div>
+  <p>Don't have an account? <a routerLink="/signup" >Sign up</a></p>
+</div>

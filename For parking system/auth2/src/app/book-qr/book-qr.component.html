@@ -1,0 +1,35 @@
+<div class="container">
+
+
+  <form (ngSubmit)="bookSlot()">
+
+
+    <h2>Book Slot</h2>
+
+    <img src="history2.png" alt="Transaction History" width="30px" height="30px" (click)="history()"
+      style="position: absolute;top:2% ;right: 3%; background-color: aliceblue; border-radius: 30%; border:  1px solid rgba(255, 255, 255, 0.341); padding: 3px; box-shadow: 1px 2px rgb(186, 184, 184);">
+
+
+    <div class="input-group">
+      <label for="name">Name:</label>
+      <!-- <input type="text" id="name" [(ngModel)]="name" name="name" required> -->
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="input-group">
+      <label for="carNumber">Car Number:</label>
+      <input type="text" id="carNumber" [(ngModel)]="carNumber" name="carNumber" required>
+    </div>
+    <div class="input-group">
+      <label for="slot">Slot:</label>
+      <select [(ngModel)]="slot" name="slot">
+        <option *ngFor="let entry of entries" id="slot" [value]="entry.slot_number">{{ entry.slot_number }}</option>
+        <!-- <option *ngFor="let entry of entries" [value]="entry">{{ entry }}</option> -->
+      </select>
+    </div>
+    <button type="submit" class="yellowB">Book Slot</button>
+  </form>
+  <div *ngIf="qrCode">
+    <h3>Your QR Code</h3>
+    <img [src]="qrCode" alt="QR Code">
+  </div>
+</div>

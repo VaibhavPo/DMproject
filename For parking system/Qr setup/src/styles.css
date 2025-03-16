@@ -1,0 +1,414 @@
+/* You can add global styles to this file, and also import other style files */
+/* Import Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+/* Define font families */
+body {
+    font-family: 'Poppins', sans-serif;
+    
+    /* Default font for body text */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+    /* Poppins for headings */
+}
+
+/* Define font family for slab serif font */
+.prominent-text {
+    font-family: 'Poppins', sans-serif;
+    /* Poppins for prominent text elements */
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 18px;
+    /* background-color: rgb(234, 222, 210); */
+    /* font-family: "Poppins", sans-serif; */
+    background-image: url(../public/bookbg2.jpg);
+    background-size: cover;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    line-height: 28.8px;
+    text-align: center;
+    color: rgb(252, 252, 252);
+    /* background-size: cover; */
+    /* background-position: center; */
+    overflow-x: hidden;
+}
+
+h1 {
+    /* font-family: "Poppins", sans-serif; */
+    font-size: 60px;
+    /* color: rgb(33, 33, 33); */
+    font-weight: 600;
+    line-height: 66px;
+    margin-top: 3px;
+    /* Remove default top margin */
+
+}
+
+h2 {
+    font-size: 45px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 49.5px;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+h5 {
+
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 23px;
+    margin-bottom: 20px;
+
+}
+
+p {
+    font-family: "Poppins", sans-serif;
+    color: #bab2b2;
+    font-size: 18px;
+    font-weight: 300;
+
+}
+
+/* div{
+    margin-top: 5px;
+} */
+section {
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+
+.yellowB {
+    border: 0px solid rgb(212, 119, 31);
+    box-shadow: 2px 3px rgb(212, 119, 31);
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: rgb(254, 123, 1);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.yellowB:hover {
+    background-color: rgb(224, 117, 17);
+}
+
+
+/* Navbar */
+nav {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+/* Custom dropdown styling */
+select {
+    width: 250px;
+    height: 40px;
+    padding: 8px;
+    border: 2px solid #303132ce; /* Blue border */
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  select:hover {
+    border-color: #5199e6; /* Darker blue on hover */
+  }
+  
+  select:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #0d0d0e;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Shadow for focus */
+  }
+  
+  option {
+    padding: 10px;
+  }
+  
+
+.menu-items ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-Content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-items li {
+    /* padding: 0px 5% 5px 5%; */
+
+}
+
+.navbar {
+    z-index: 1000;
+    min-width: 600px;
+    position: fixed;
+    margin-top: 15px;
+    height: 70px;
+
+  
+    /* background-filter: blur(10px); */
+    /* Adjust blur level */
+    /* background-image: url("place.jpg"); */
+    background-color: #ffd793a7;
+    border-radius: 30px;
+}
+
+.navbar a {
+    
+    text-decoration: none;
+    /* margin: 10px 10px; */
+    /* padding-bottom: 10px; */
+}
+
+.navbar a img{
+
+    position: absolute;
+    /* top: %; */
+    margin-top: 5px;
+    left: 5%;
+}
+.navbar a strong{
+    position: absolute;
+        top: 35%;
+        left: 40%;
+    
+}
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle .hamburger {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
+
+.menu-icon {
+    display: none;
+    
+}
+
+
+a {
+    color: #262626;
+}
+.link_,a{color: white;}
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 95%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black overlay */
+            z-index: -1; /* behind other elements */
+        }
+        
+        .container {
+            position: relative; /* to make the overlay work */
+            max-width: 320px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #344955;
+            border-radius: 8px;
+            border: 1px solid white;
+            box-shadow: 0 0 10px rgba(230, 227, 227, 0.601);
+        }
+        
+        /* h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        } */
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .input-group input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            width: 90%;
+            padding: 10px;
+            background-color: #f0ad4e; /* use your preferred color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #ec971f; /* darker shade on hover */
+        }
+
+@media only screen and (max-width: 768px) {
+
+body{
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    /* scroll */
+}
+.navbar a img{
+    
+    margin-top: -30px;
+    left: 10%;
+}
+
+    .navbar{
+        min-width: 350px;
+        /* width: 300px; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .menu-icon {
+        display: block;
+    }
+
+    .menu-items {
+        display: none;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        height: auto;
+        width: 180px;
+        backdrop-filter: blur(10px); /* Adjust blur level */
+        border-radius: 30px;
+        z-index: 1001;
+        border-radius: 10px;
+        overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+        padding: 10px; /* Adjust padding as needed */
+    }
+    
+    .menu-items::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../public/bookbg2.jpg");
+        /* background-image: url("place.jpg"); */
+        background-size: cover;
+        background-position: center;
+        opacity: .8; /* Adjust opacity as needed */
+        z-index: -1; /* Ensures the background image stays behind the content */
+        border-radius: 10px; /* Match the border radius of the parent */
+    }
+    
+
+    .menu-items ul {
+        list-style: none;
+        font-weight: 300;
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left: 0;
+
+    }
+
+    .menu-items li {
+        /* background-color: #565656; */
+        border-bottom: 1px 2px solid rgba(217, 199, 199, 0.2);
+        box-shadow: 2px 2px rgba(230, 227, 227, 0.3);
+        border-radius: 6px;
+        margin: 10px 5px 10px 5px;
+        padding: 5px 10px 5px 10px;
+        /* margin-bottom: 15px; */
+        /* background-color: rgb(193, 238, 238); */
+    }
+
+    .menu-items.active {
+        display: flex;
+    }
+
+    h1 {
+        
+        font-size: 35px;
+       
+        font-weight: 600;
+        line-height: 40px;
+        margin-top: 3px;
+        text-align: center;
+        /* Remove default top margin */
+
+    }
+
+    h2 {
+        font-size: 32px;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 36px;
+    }
+
+    h3 {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+
+    h5 {
+
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 18px;
+        margin-bottom: 20px;
+
+    }
+
+    p {
+        
+       
+        font-size: 15px;
+        font-weight: 300;
+        text-align: center;
+
+    }
+    
+}

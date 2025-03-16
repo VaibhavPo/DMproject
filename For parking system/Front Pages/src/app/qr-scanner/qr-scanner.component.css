@@ -1,0 +1,79 @@
+/* Container for the QR scanner */
+#qr-reader {
+  /* position: relative; */
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Light background color for the QR scanner */
+  border: 2px solid #ddd; /* Border around the scanner */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Overlay for better focus */
+#qr-reader-overlay {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+  border-radius: 8px; /* Match border radius of the scanner */
+}
+
+/* Optional: QR code success message */
+.success-message {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 10;
+}
+.container button{
+  margin: 5px !important;
+  
+}
+/* Brackets for QR placement */
+.qr-bracket {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f7f4f4; 
+  border-radius: 0;
+  background: transparent;
+  z-index: 1000;
+}
+
+.qr-bracket.top-left {
+  top: 10%;
+  left: 23%;
+  border-width: 5px 0 0 5px;
+}
+
+.qr-bracket.top-right {
+  top: 10%;
+  right: 23%;
+  border-width: 5px 5px 0 0;
+}
+
+.qr-bracket.bottom-left {
+  bottom: 45%;
+  left: 23%;  
+  /* margin-bottom: -50px; */
+  border-width: 0 0 5px 5px;
+}
+
+.qr-bracket.bottom-right {
+  bottom: 45%;
+  right: 23%;  
+  border-width: 0 5px 5px 0;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="map.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- <link rel="manifest" href="/site.webmanifest" /> -->
+</head>
+
+<body>
+    <!--navbar-->
+    <nav class="navbar glass" style="height: 70px">
+        <span>
+            <a href="/index.html" style="display: flex; align-items: center">
+                <img class="img2" src="/img/mountain.png" width="40" style="margin: -25px -10px -25px -20px" />
+                <h1 class="logo">&nbsp;DRISHTI</h1>
+            </a>
+        </span>
+        <ul class="nav-links">
+            <li><a href="/index.html" id="pri" class="active cir_border">Home</a></li>
+            <li><a href="#" id="tri" class="cir_border">Explore More</a></li>
+            <!-- <li><a href="#" id="quad" class="cir_border">Other Facilities </a></li> -->
+            <li><a href="http://localhost:4200/login" id="quint" class="cir_border">Parking Facilities</a></li>
+        </ul>
+        <img src="/img/menu-btn.png" alt="" class="menu-btn" />
+    </nav>
+    <div id="map"></div>
+
+    <section class="footer">
+        <span>Edited By Vaibhav Pokhriyal & Akshat Kestwal | &#169; 2024 All rights reserved.</span>
+        <div class="social">
+            <li>
+                <a href="" target="_blank" rel="noreferrer"><i class="fa fa-globe"></i></a>
+                <a href="https://github.com/VaibhavPo" target="_blank" rel="noreferrer"><i class="fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/vaibhav-pokhriyal-237b86259/" target="_blank" rel="noreferrer"><i
+                        class="fa fa-linkedin-square"></i></a>
+            </li>
+        </div>
+    </section>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Routing Machine JS -->
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <!-- Initialize the map -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            // ... your config details
+            apiKey: "AIzaSyDbG9crbJCKAQtuIry5guBxWJpSd31OdOM",
+            authDomain: "trafficcngestion.firebaseapp.com",
+            databaseURL: "https://trafficcngestion-default-rtdb.firebaseio.com",
+            projectId: "trafficcngestion",
+            storageBucket: "trafficcngestion.appspot.com",
+            messagingSenderId: "1050456041831",
+            appId: "1:1050456041831:web:6dd79b0f1b31e0f742e7c2",
+            measurementId: "G-R9DPGQWXNX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        console.log(db);
+
+        function readData() {
+            const userRef = ref(db, '/'); // Assuming you want data from the root
+
+            return get(userRef).then((snapshot) => {
+                let count = Object.keys(snapshot.val()).length; // Initialize count inside the Promise
+
+
+
+                return count; // Return count after all data is processed
+            });
+        }
+
+        // Usage
+        readData().then((dataCount) => {
+            console.log("Number of data elements:", dataCount);
+            for (let i = 0; i < dataCount - 2; i++) {
+                var color = `rgb(${5 + 24 * i}, ${110 - 8 * i}, ${245 - 24 * i})`; // Generate dynamic color
+                var ChangeRoutColor = {
+                    color,
+                    weight: 6,
+                };
+            }
+
+            // Custom styles for the route
+            var customRouteStyle = {
+                color: '#05B669', // Change the color here
+                weight: 8
+            };
+            var myIcon = L.icon({
+                iconUrl: '/Assets/parkingMarker3.png', // Replace with your image path
+                iconSize: [32, 48], // Size of the icon (width, height)
+                iconAnchor: [16, 42]  // Point of the icon that corresponds to the marker's location (half width, near bottom)
+            });
+
+            // Create a map instance
+            const map = L.map('map').setView([30.284016, 78.782959], 11);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Add a marker to the map
+            const marker = L.marker([30.368935, 78.439477]).addTo(map)
+                .bindPopup('Tehri Garhwal')
+                .openPopup();
+
+            function onMapClick(e) {
+                alert("You clicked the map at " + e.latlng);
+            }
+
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(30.142838, 78.608551),
+                    L.latLng(30.254484, 79.216919)
+                ],
+                createMarker: function () { return null; },
+                draggableWaypoints: false,
+                lineOptions: {
+                    styles: [customRouteStyle]
+                }
+            }).addTo(map);
+
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(30.254484, 79.216919),
+                    L.latLng(30.223016, 78.785622),
+                ],
+                createMarker: function () { return null; },
+                draggableWaypoints: false,
+                lineOptions: {
+                    styles: [ChangeRoutColor]
+                }
+            }).addTo(map);
+
+            // Add a circle to the map
+            const circle = L.circle([30.223016, 78.785622], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 1000
+            }).addTo(map);
+
+            map.on('click', onMapClick);
+
+            L.marker([30.142838, 78.608551]).addTo(map);
+            L.marker([30.254484, 79.216919]).addTo(map);
+
+            const parkMarker = L.marker([30.283533, 79.159478], { icon: myIcon }).addTo(map);
+            parkMarker.on('click', function (e) {
+                window.location.href = "http://localhost:4200/login";
+            });
+        });
+
+        var hotelMarker = L.Marker([30.229, 80]).addTo(map).bindPopup('<h1>Mock Hotel</h1> <p> This is a good hotel at a good place</p> <img src="../Assets/hotel/hotel1.jpg"/>')
+            ;
+
+
+    </script>
+
+    <script>
+        const menuBtn = document.querySelector(".menu-btn");
+        const navlinks = document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+            navlinks.classList.toggle("mobile-menu");
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

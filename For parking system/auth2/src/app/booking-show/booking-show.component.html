@@ -1,0 +1,15 @@
+<H3>Hi... {{username}}</H3>
+<p>Your bookings are: </p>
+<div *ngFor="let booking of bookings; let c = index" class="booking container">
+    <h5 style="margin-top: -0% ;">Booking {{c+1}}</h5>
+    <!-- <p><strong>Username:</strong> {{ booking.username }}</p> -->
+    <p><strong> By ID: </strong>{{ booking.by_id }}</p>
+    <p> <strong>Car Number:</strong> {{ booking.car_number }}</p>
+    <p><strong>Slot Number:</strong> {{ booking.slot_number }}</p>
+
+    <p><strong>Charge:</strong> {{ booking.transaction_id }}</p>
+    <p><strong>Entry Time:</strong> {{ booking.entry_time }}</p>
+    <p><strong>Exit Time:</strong> {{ booking.exit_time }}</p>
+    <!-- <img [src]="qrCode" alt="QR Code"> -->
+    <button (click)="generateQR(booking.by_id)" class="yellowB">Get QR</button>
+</div>

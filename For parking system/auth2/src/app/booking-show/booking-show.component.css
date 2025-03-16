@@ -1,0 +1,23 @@
+.container p{
+    font-size: small !important;
+    color: white;
+    text-align: left;
+}
+p{
+    font-size: medium !important;
+    color: white; 
+}
+h3{
+    margin-top: 7%;
+}
+.container{
+    margin: 1% auto 2% auto;
+}
+.navbar{
+    /* background-color: aliceblue; */
+}
+@media only screen and (max-width: 768px){
+    h3{
+        margin-top: 25%;
+    }
+}
